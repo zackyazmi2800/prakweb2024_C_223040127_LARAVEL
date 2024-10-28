@@ -3,19 +3,18 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['title' => 'Home Page']);
 });
 
 Route::get('/about', function () {
-    return view('about', ['nama' => 'Zacky Azmi']);
+    return view('about', ['title' => 'About', 
+                            'nama' => 'Zacky Azmi']);
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    return view('blog', ['title' => 'Blog']);
 });
 
 Route::get('/contact', function () {
-    return view('contact', ['x' => 'https://x.com/zacky_2801',
-                            'yt' => 'https://x.com/zacky_2801',
-                            'ig' => 'https://www.instagram.com/zackyazmi_28/']);
+    return view('contact', ['title' => 'Contact']);
 });
