@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home Page']);
@@ -14,53 +16,12 @@ Route::get('/about', function () {
 
 Route::get('/posts', function () {
     return view('posts', ['title' => 'Blog', 
-                        'posts' => [
-                            [
-                                'id' => 1,
-                                'slug' => 'judul-1',
-                                'title' => 'judul1',
-                                'author' => 'Zack',
-                                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus sequi
-                                 inventore aut tempora ratione et molestiae maiores laudantium saepe sit. A alias, 
-                                 perferendis quod eum maiores deleniti numquam saepe at.'
-                            ],
-                            [
-                                'id' => 2,
-                                'slug' => 'judul-2',
-                                'title' => 'judul2',
-                                'author' => 'Zack',
-                                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe placeat, recusandae itaque quas,
-                                 similique beatae quasi iure nemo ducimus eius fugit ullam molestiae veritatis debitis ratione! Praesentium iste omnis neque!'
-                            ]
-
-                                    ]
-    ]);
+                        'posts' => Post::all()]);
 });
 
 Route::get('/posts/{slug}', function($slug){
-    $posts = [
-    [
-        'id' => 1,
-        'slug' => 'judul-1',
-        'title' => 'Judul1',
-        'author' => 'Zack',
-        'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus sequi
-         inventore aut tempora ratione et molestiae maiores laudantium saepe sit. A alias, 
-         perferendis quod eum maiores deleniti numquam saepe at.'
-    ],
-    [
-        'id' => 2,
-        'slug' => 'judul-2',
-        'title' => 'Judul2',
-        'author' => 'Zack',
-        'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe placeat, recusandae itaque quas,
-         similique beatae quasi iure nemo ducimus eius fugit ullam molestiae veritatis debitis ratione! Praesentium iste omnis neque!'
-    ]
-        ];
 
-    $post = Arr::first($posts, function($post) use($slug) {
-        return $post['slug'] == $slug;
-    });
+    $post = Post::find($slug);
 
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 });
