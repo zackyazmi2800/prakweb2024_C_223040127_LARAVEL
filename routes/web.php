@@ -15,7 +15,7 @@ Route::get('/blog', function () {
 });
 
 Route::get('/contact', function () {
-    return view('contact', ['nama' => 'Zacky Azmi',
-                            'email' => 'zackyazmi30@gmail.com',
-                            'ig' => 'zackyazmi_28']);
+    return view('contact', ['x' => 'https://x.com/zacky_2801',
+                            'yt' => 'https://x.com/zacky_2801',
+                            'ig' => 'https://www.instagram.com/zackyazmi_28/']);
 });

@@ -12,8 +12,11 @@
     <a href="/blog">blog</a>
     <a href="/contact">contact</a>
     <h1>Halaman Contact</h1>
-    <h3>Nama : {{$nama}}</h3>
-    <h3>Email : {{$email}}</h3>
-    <h3>IG : {{$ig}}</h3>
+    <ul>
+
+        <li><a href="{{$x}}">X</a></li>
+        <li><a href="{{$yt}}">Youtube</a></li>
+        <li><a href="{{$ig}}">Instagram</a></li>
+    </ul>
 </body>
 </html>
